@@ -1,0 +1,39 @@
+apply plugin: 'eclipse'
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+version = '2.0.1'
+group = 'com.ecommerce.grutils'
+
+sourceCompatibility = '1.5'
+targetCompatibility = '1.5'
+
+manifest.mainAttributes(
+                                            'Provider': group,
+                                            'Implementation-Version': version,
+                                            'Built-With': ('gradle-' + new GradleVersion().getVersion()),
+                                            'Class-Path': '.'
+                                            )
+                                            
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+configurations {
+    compile
+    runtime
+}
+
+dependencies {
+
+    groovy group: 'org.codehaus.groovy', name: 'groovy', version: '1.7.5'
+    testCompile group: 'junit', name: 'junit', version: '4.7'
+    
+    //ssh
+    compile group: 'org.apache.ant', name:'ant-jsch', version:'1.8.1'
+    compile group: 'com.jcraft', name:'jsch', version:'0.1.42'
+    
+    //logging
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.5.11'
+}
