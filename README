@@ -1,0 +1,2 @@
+To build and install to your local maven repo:
+gradle install
